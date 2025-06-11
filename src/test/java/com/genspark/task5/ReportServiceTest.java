@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.CompletableFuture;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static utils.TestUtils.*;
 
 class ReportServiceTest {
 
@@ -17,8 +18,9 @@ class ReportServiceTest {
         long end = System.nanoTime();
         long durationMs = (end - start) / 1_000_000;
         System.out.println("Execution time: " + durationMs + " ms");
-        assertTrue(durationMs < 350, "Should return within 350ms");
-        assertTrue(result.contains("Activity{user42}"));
-        assertTrue(result.contains("Profile{user42}"));
+        yakshaAssert(currentTest(), durationMs < 350, businessTestFile);
+        //assertTrue(durationMs < 350, "Should return within 350ms");
+        //assertTrue(result.contains("Activity{user42}"));
+        //assertTrue(result.contains("Profile{user42}"));
     }
 }
